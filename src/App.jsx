@@ -516,6 +516,7 @@ export default function App() {
 
       <footer className="status-bar">
         <span>{connection ? `Connected: ${connection.username}@${connection.host}` : "Disconnected"}</span>
+        <span className="footer-center">Built by <a href="https://surajdev.com" target="_blank" rel="noopener noreferrer">surajdev.com</a></span>
         <span>{currentPath}</span>
       </footer>
 
