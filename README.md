@@ -2,6 +2,10 @@
 
 Browser-based FTP/FTPS/SFTP code editor with Vercel serverless APIs.
 
+**Live demo:** [free-ftp-online.vercel.app](https://free-ftp-online.vercel.app)
+
+> **Don't enter production credentials on the hosted demo.** Your login details pass through a server you don't control. For real use, self-host it (see [Local Development](#local-development) and [Deploy To Vercel](#deploy-to-vercel)) so they only pass through your own.
+
 ## Features
 
 - Connect to `FTP`, `FTPS`, and `SFTP` servers from browser UI.
@@ -18,9 +22,9 @@ Browser-based FTP/FTPS/SFTP code editor with Vercel serverless APIs.
 - Frontend: React + Vite + Monaco Editor
 - Backend: Vercel Serverless Functions (`api/*.js`)
 - Protocols:
-	- `ssh2-sftp-client` for SFTP
-	- `ssh2` for SSH commands
-	- `basic-ftp` for FTP/FTPS
+  - `ssh2-sftp-client` for SFTP
+  - `ssh2` for SSH commands
+  - `basic-ftp` for FTP/FTPS
 - Storage: browser memory (no database)
 
 ## Local Development
@@ -57,13 +61,13 @@ Each endpoint expects a `connection` object (except `/api/connect`, where connec
 
 ```json
 {
-	"protocol": "sftp",
-	"host": "example.com",
-	"port": 22,
-	"username": "deploy",
-	"password": "secret",
-	"privateKey": "-----BEGIN OPENSSH PRIVATE KEY-----...",
-	"passphrase": "optional"
+  "protocol": "sftp",
+  "host": "example.com",
+  "port": 22,
+  "username": "deploy",
+  "password": "secret",
+  "privateKey": "-----BEGIN OPENSSH PRIVATE KEY-----...",
+  "passphrase": "optional"
 }
 ```
 
@@ -81,3 +85,8 @@ Each endpoint expects a `connection` object (except `/api/connect`, where connec
 - Credentials are sent per request from frontend session.
 - Avoid logging request payloads in production.
 - SSH command endpoint only allows a limited command set.
+- If you host this publicly, add rate limiting and block connections to private and internal IP ranges (`10.x`, `172.16-31.x`, `192.168.x`, `127.x`, `169.254.x`). Without that, anyone can use your deployment to reach servers they shouldn't.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
